@@ -9,21 +9,18 @@
 
     <link rel="stylesheet" href="{{ asset('fonts/icomoon/style.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('css/login/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/auth/owl.carousel.min.css') }}">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{ asset('css/login/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/auth/bootstrap.min.css') }}">
 
     <!-- Style -->
-    <link rel="stylesheet" href="{{ asset('css/login/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/auth/style.css') }}">
 
-    <title>Login</title>
+    <title>@yield('title')</title>
 </head>
 
 <body>
-
-
-
     <div class="content">
         <div class="container">
             <div class="row">
@@ -35,16 +32,14 @@
                         @yield('content')
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
 
-
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="{{ asset('js/auth/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('js/auth/popper.min.js') }}"></script>
+    <script src="{{ asset('js/auth/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/auth/main.js') }}"></script>
 </body>
 
 </html>
