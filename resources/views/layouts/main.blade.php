@@ -7,11 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>@yield('title')</title>
     <!-- plugins:css -->
-    <link rel="stylesheet" href="{{ asset('vendors/feather/feather.css') }}">
-    <link rel="stylesheet" href="{{ asset('vendors/mdi/css/materialdesignicons.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('vendors/ti-icons/css/themify-icons.css') }}">
+    <link rel="stylesheet" href="/vendors/feather/feather.css">
+    <link rel="stylesheet" href="/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="/vendors/ti-icons/css/themify-icons.css">
     <!-- inject:css -->
-    <link rel="stylesheet" href="{{ asset('css/vertical-layout-light/style.css') }}">
+    <link rel="stylesheet" href="/css/vertical-layout-light/style.css">
+    @yield('custom-css')
 </head>
 
 <body>
@@ -39,10 +40,10 @@
                     <li class="nav-item dropdown d-none d-lg-block user-dropdown">
                         <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            <img class="img-xs rounded-circle" src="images/profile.png" alt="Profile image"> </a>
+                            <img class="img-xs rounded-circle" src="/images/profile.png" alt="Profile image"> </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                             <div class="dropdown-header text-center">
-                                <img class="img-md rounded-circle" src="images/profile.png" alt="Profile image">
+                                <img class="img-md rounded-circle" src="/images/profile.png" alt="Profile image">
                                 <p class="mb-1 mt-3 font-weight-semibold">{{ auth()->user()->name }}</p>
                                 <p class="fw-light text-muted mb-0">{{ auth()->user()->email }}</p>
                             </div>
@@ -74,10 +75,9 @@
                     @if(auth()->user()->isStaff() || auth()->user()->isAdmin())
                     <li class="nav-item nav-category">Manager</li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
-                            aria-controls="ui-basic">
+                        <a class="nav-link" href="{{ route('management.index') }}">
                             <i class="menu-icon mdi mdi-floor-plan"></i>
-                            <span class="menu-title">User management</span>
+                            <span class="menu-title">User Management</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -121,15 +121,17 @@
     <!-- container-scroller -->
 
     <!-- plugins:js -->
-    <script src="{{ asset('vendors/js/vendor.bundle.base.js') }}"></script>
+    <script src="/vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- inject:js -->
-    <script src="{{ asset('js/light-layout/off-canvas.js') }}"></script>
-    <script src="{{ asset('js/light-layout/hoverable-collapse.js') }}"></script>
-    <script src="{{ asset('js/light-layout/template.js') }}"></script>
+    <script src="/js/light-layout/off-canvas.js"></script>
+    <script src="/js/light-layout/hoverable-collapse.js"></script>
+    <script src="/js/light-layout/template.js"></script>
+    <script src="/js/light-layout/jquery.cookie.js" type="text/javascript"></script>
     <!-- endinject -->
     <!-- Custom js for this page-->
-    <script src="{{ asset('js/light-layout/dashboard.js') }}"></script>
+    <script src="/js/light-layout/dashboard.js"></script>
+    @yield('custom-js')
     <!-- End custom js for this page-->
 </body>
 
