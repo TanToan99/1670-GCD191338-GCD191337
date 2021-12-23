@@ -32,6 +32,8 @@ Route::get('/trainer/tner-row-data', 'Trainer\TrainerController@getTnerRowData')
 
 
 Route::get('/profile','UserController@index')->name('profile');
+Route::post('/profile/edit','UserController@update')->name('profile.update');
+
 
 Route::get('/category','Management\CategoryController@index')->name('category.index');
 Route::get('/category/dt-row-data', 'Management\CategoryController@getDtRowData');

@@ -32,7 +32,11 @@
     <div class="row">
         <div class="col-sm-12">
             <br>
+            <div class="card card-rounded">
+                <div class="card-body">
             <table id="courses-table" class="table table-condensed col-12">
+                <h4 class="card-title card-title-dash">List trainee of course: {{ $course->name }}</h4>
+                <br>
                 <thead>
                     <tr>
                         <th>ID</th>
