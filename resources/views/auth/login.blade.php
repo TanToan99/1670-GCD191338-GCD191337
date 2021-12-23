@@ -36,11 +36,10 @@
                     <input type="checkbox" checked="checked" name="remember" />
                     <div class="control__indicator"></div>
                 </label>
-                <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span>
             </div>
 
             <input type="submit" value="Log In" class="btn text-white btn-block btn-primary">
-            <span class="d-block text-left my-4 text-muted"> If you dont have account, <a href="{{ route('register') }}"> Register here</a></span>
+            
         </form>
     </div>
 @endsection

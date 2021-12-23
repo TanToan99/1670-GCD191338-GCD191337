@@ -27,10 +27,10 @@
                     </button>
                 </div>
                 <div>
-                    <a class="navbar-brand brand-logo" href="index.html">
+                    <a class="navbar-brand brand-logo" href="{{ route('home') }}">
                         FPT TRAINER
                     </a>
-                    <a class="navbar-brand brand-logo-mini" href="index.html">
+                    <a class="navbar-brand brand-logo-mini" href="{{ route('home') }}">
                         FPT TRAINER
                     </a>
                 </div>
@@ -38,7 +38,7 @@
             <div class="navbar-menu-wrapper d-flex align-items-top">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item dropdown d-none d-lg-block user-dropdown">
-                        <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown"
+                        <a class="nav-link" id="UserDropdown" href="{{ route('home') }}" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             <img class="img-xs rounded-circle" src="/images/profile.png" alt="Profile image"> </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
@@ -67,7 +67,7 @@
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="{{ route('home') }}">
                             <i class="mdi mdi-grid-large menu-icon"></i>
                             <span class="menu-title">Dashboard</span>
                         </a>
