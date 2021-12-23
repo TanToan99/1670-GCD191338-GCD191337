@@ -15,3 +15,4 @@ Route::get('/management/user/edit/{id}','Management\UserController@edit')->name(
 Route::post('/management/user/edit/{id}','Management\UserController@update')->name('management.user.update');
 Route::get('/management/user/remove/{id}','Management\UserController@remove')->name('management.user.remove');
 Route::get('/management/user/create','Management\UserController@create')->name('management.user.create');
+Route::post('/management/user/store','Management\UserController@store')->name('management.user.store');

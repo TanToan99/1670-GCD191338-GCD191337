@@ -36,7 +36,7 @@
                 <div class="d-sm-flex align-items-center justify-content-between border-bottom">
                     <div>
                         <div class="btn-wrapper">
-                            <a href="#" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Create
+                            <a href="{{ route('management.user.create') }}" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Create
                                 Account</a>
                         </div>
                     </div>

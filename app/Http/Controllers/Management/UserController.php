@@ -32,8 +32,17 @@ class UserController extends Controller
             ->make(true);
     }
 
-    public function create(Request $request){
-        //todo:
+    public function create(){
+        return view('management.create');
+    }
+    
+    public function store(UserRequest $request){
+        $data = $request->except(["_token","confirm_password"]);
+        $data["password"] = bcrypt($data["password"]);
+        if(User::create($data)){
+            return redirect()->back()->with(['class' => 'success', 'message' => 'Create user success']);
+        }
+        return redirect()->back()->with(['class' => 'danger', 'message' => 'Error when create account']);
     }
 
     public function edit($id)
