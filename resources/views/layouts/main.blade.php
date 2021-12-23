@@ -72,46 +72,57 @@
                             <span class="menu-title">Dashboard</span>
                         </a>
                     </li>
-                    @if(auth()->user()->isStaff() || auth()->user()->isAdmin())
-                    <li class="nav-item nav-category">Manager</li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('management.index') }}">
-                            <i class="menu-icon mdi mdi-floor-plan"></i>
-                            <span class="menu-title">User Management</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
-                            aria-controls="ui-basic">
-                            <i class="menu-icon mdi mdi-floor-plan"></i>
-                            <span class="menu-title">Cousers Management</span>
-                        </a>
-                    </li>
+                    @if (auth()->user()->isStaff() ||
+    auth()->user()->isAdmin())
+                        <li class="nav-item nav-category">Manager</li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('management.index') }}">
+                                <i class="menu-icon mdi mdi-floor-plan"></i>
+                                <span class="menu-title">User Management</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
+                                aria-controls="ui-basic">
+                                <i class="menu-icon mdi mdi-floor-plan"></i>
+                                <span class="menu-title">Cousers Management</span>
+                            </a>
+                        </li>
                     @endif
-                    @if(auth()->user()->isStaff() || auth()->user()->isAdmin() || auth()->user()->isTrainer())
-                    <li class="nav-item nav-category">Trainer</li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false"
-                            aria-controls="form-elements">
-                            <i class="menu-icon mdi mdi-card-text-outline"></i>
-                            <span class="menu-title">Courses</span>
-                        </a>
-                    </li>
+                    @if (auth()->user()->isStaff() ||
+    auth()->user()->isAdmin() ||
+    auth()->user()->isTrainer())
+                        <li class="nav-item nav-category">Trainer</li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="collapse" href="#form-elements"
+                                aria-expanded="false" aria-controls="form-elements">
+                                <i class="menu-icon mdi mdi-card-text-outline"></i>
+                                <span class="menu-title">Courses</span>
+                            </a>
+                        </li>
                     @endif
-                    @if(auth()->user()->isStaff() || auth()->user()->isAdmin() || auth()->user()->isTrainee())
-                    <li class="nav-item nav-category">Trainee</li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false"
-                            aria-controls="form-elements">
-                            <i class="menu-icon mdi mdi-card-text-outline"></i>
-                            <span class="menu-title">My courses</span>
-                        </a>
-                    </li>
+                    @if (auth()->user()->isStaff() ||
+    auth()->user()->isAdmin() ||
+    auth()->user()->isTrainee())
+                        <li class="nav-item nav-category">Trainee</li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="collapse" href="#form-elements"
+                                aria-expanded="false" aria-controls="form-elements">
+                                <i class="menu-icon mdi mdi-card-text-outline"></i>
+                                <span class="menu-title">My courses</span>
+                            </a>
+                        </li>
                     @endif
                 </ul>
             </nav>
             <div class="main-panel">
                 <div class="content-wrapper">
+
+                    @if (session('class'))
+                        <div class="alert alert-{{ session('class') }}">
+                            <li>{{ session('message') }}</li>
+                        </div>
+                    @endif
                     @yield('content')
                 </div>
             </div>
