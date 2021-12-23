@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'User Management - Assign course')
+@section('title', 'User Management')
 
 @section('custom-css')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
@@ -28,39 +28,22 @@
 
     </style>
 @endsection
+
 @section('content')
     <div class="row">
         <div class="col-sm-12">
+
             <div class="card card-rounded">
                 <div class="card-body">
-                    <h4 class="card-title card-title-dash">Assign {{ $role }}: {{ $user->name }} - {{ $user->email }}</h4>
-                    <br>
-                    <form action="{{ route('management.user.assignCourse',$user->id) }}" method="POST">
-                        @csrf
-                        <div class="form-group">
-                            <label><i class="text-danger">(*)</i>Course</label>
-                            <select name="course_id" class="form-control">
-                                @foreach($courses as $course)
-                                <option value="{{$course->id}}">{{ $course->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <a href="{{ route('management.index') }}" class="btn btn-default btn-sm">Back</a>
-                            <button type="submit" class="btn btn-info btn-sm">Assign</button>
-                        </div>
-                    </form>
-                </div>
-                <div class="card-body">
-                    <h4 class="card-title card-title-dash">List course:</h4>
+                    <h4 class="card-title card-title-dash">Course {{ $course->name }}</h4>
+                    <p>Trainer: {{ $trainer }} </p>
+                    <p>List Trainee</p>
                     <br>
                     <table id="users-table" class="table table-condensed col-12">
                         <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th>Description</th>
-                                <th>Category</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -86,9 +69,9 @@
                     }
                 },
                 ajax: {
-                    "url": '{{ url('/management/user/course/dt-row-data') }}',
+                    "url": '{{ url('/course/user-row-data') }}',
                     "data": {
-                        'user_id': '{{ $user->id }}'
+                        'course_id': '{{ $course->id }}'
                     }
                 },
                 columns: [{
@@ -98,14 +81,6 @@
                     {
                         data: 'name',
                         name: 'name'
-                    },
-                    {
-                        data: 'description',
-                        name: 'description',
-                    },
-                    {
-                        data: 'category',
-                        name: 'category',
                     },
                     {
                         data: 'action',

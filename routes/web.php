@@ -19,6 +19,10 @@ Route::post('/management/user/store','Management\UserController@store')->name('m
 Route::get('/management/user/{id}/assign','Management\UserController@assign')->name('management.user.assign');
 Route::post('/management/user/{id}/assign','Management\UserController@assignCourse')->name('management.user.assign');
 Route::get('/management/dt-row-data', 'Management\UserController@getDtRowData');
+Route::get('/management/user/{id}/assign','Management\UserController@assign')->name('management.user.assign');
+Route::post('/management/user/{id}/assign','Management\UserController@assignCourse')->name('management.user.assignCourse');
+Route::get('/management/user/{id}/{course}/remove','Management\UserController@removeAssignCourse')->name('management.course.remove');
+Route::get('/management/user/course/dt-row-data','Management\UserController@getCourseRowData');
 
 Route::get('/trainee/trainee-courses','Trainee\TraineeController@index')->name('trainee.trainee_course');
 Route::get('/trainee/dt-row-data', 'Trainee\TraineeController@getDtRowData');
@@ -33,7 +37,6 @@ Route::get('/trainer/tner-row-data', 'Trainer\TrainerController@getTnerRowData')
 
 Route::get('/profile','UserController@index')->name('profile');
 Route::post('/profile/edit','UserController@update')->name('profile.update');
-
 
 Route::get('/category','Management\CategoryController@index')->name('category.index');
 Route::get('/category/dt-row-data', 'Management\CategoryController@getDtRowData');
@@ -51,3 +54,6 @@ Route::post('/course/store','Management\CourseController@store')->name('course.s
 Route::get('/course/remove/{id}','Management\CourseController@remove')->name('course.remove');
 Route::get('/course/edit/{id}','Management\CourseController@edit')->name('course.edit');
 Route::post('/course/edit/{id}','Management\CourseController@update')->name('course.update');
+Route::get('/course/view/{id}','Management\CourseController@viewUserinCourse')->name('course.viewUsers');
+Route::get('/course/user/{id}/{user}/remove','Management\CourseController@removeuserincourse')->name('course.remove.user');
+Route::get('/course/user-row-data', 'Management\CourseController@getUsersRowData');
