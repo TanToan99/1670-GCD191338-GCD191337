@@ -22,8 +22,7 @@
             </div>
             <div class="form-group last mb-4">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" name="password" required
-                    autocomplete="current-password">
+                <input type="password" class="form-control" id="password" name="password" required autocomplete="current-password">
 
                 @error('password')
                     <span class="invalid-feedback" role="alert">
