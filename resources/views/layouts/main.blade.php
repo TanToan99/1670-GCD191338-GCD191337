@@ -101,7 +101,7 @@
                     @if(auth()->user()->isStaff() || auth()->user()->isAdmin() || auth()->user()->isTrainee())
                     <li class="nav-item nav-category">Trainee</li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('trainer.trainer_course') }}">
+                        <a class="nav-link" href="{{ route('trainee.trainee_course') }}">
                             <i class="menu-icon mdi mdi-floor-plan"></i>
                             <span class="menu-title">My Courses</span>
                         </a>

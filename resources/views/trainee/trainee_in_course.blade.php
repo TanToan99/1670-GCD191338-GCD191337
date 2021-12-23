@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Trainer Course')
+@section('title', 'User Management')
 
 @section('custom-css')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
@@ -15,7 +15,7 @@
             margin: 0 4px;
         }
 
-        .pagination li.active>a{
+        .pagination li.active>a {
             background-color: blue;
             color: white;
             border: 1px solid #blue;
@@ -25,23 +25,26 @@
             background-color: #ddd;
             color: black;
         }
+
     </style>
 @endsection
 
 @section('content')
     <div class="row">
         <div class="col-sm-12">
-            <br>
-            <table id="courses-table" class="table table-condensed col-12">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Course</th>
-                        <th>Description</th>
-                        <th>Category</th>
-                    </tr>
-                </thead>
-            </table>
+            <div class="card card-rounded">
+                <div class="card-body">
+                    <table id="users-table" class="table table-condensed col-12">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Email</th>
+                                <th>Name</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
@@ -51,7 +54,7 @@
     <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#courses-table').DataTable({
+            $('#users-table').DataTable({
                 processing: true,
                 serverSide: true,
                 language: {
@@ -60,25 +63,23 @@
                         next: ">"
                     }
                 },
-                ajax: '{{ url('/trainee/dt-row-data') }}',
+                ajax: '{{ url('/trainer/tner-row-data') }}',
                 columns: [{
                         data: 'id',
                         name: 'id'
                     },
                     {
+                        data: 'email',
+                        name: 'email',
+                        
+                    },
+                    {
                         data: 'name',
-                        name: 'name',
-                    },
-                    {
-                        data: 'description',
-                        name: 'description'
-                    },
-                    {
-                        data: 'category',
-                        name: 'category',
+                        name: 'name'
                     },
                 ]
             });
+            $('#users-table_wrapper').removeClass('form-inline');
         });
     </script>
 @endsection

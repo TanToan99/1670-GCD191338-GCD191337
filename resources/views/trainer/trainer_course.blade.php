@@ -38,7 +38,7 @@
                         <th>ID</th>
                         <th>Course</th>
                         <th>Description</th>
-                        <th>Category_id</th>
+                        <th>Category</th>
                     </tr>
                 </thead>
             </table>
@@ -75,7 +75,7 @@
                     },
                     {
                         data: 'category',
-                        name: 'category_',
+                        name: 'category',
                     },
                 ]
             });
