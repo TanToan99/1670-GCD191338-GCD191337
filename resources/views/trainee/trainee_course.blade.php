@@ -35,7 +35,7 @@
             <div class="card card-rounded">
                 <div class="card-body">
             <table id="courses-table" class="table table-condensed col-12">
-                <h4 class="card-title card-title-dash">List trainee of course: {{ $course->name }}</h4>
+                <h4 class="card-title card-title-dash">List my course: </h4>
                 <br>
                 <thead>
                     <tr>

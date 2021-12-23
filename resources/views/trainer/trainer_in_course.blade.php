@@ -34,7 +34,7 @@
         <div class="col-sm-12">
             <div class="card card-rounded">
                 <div class="card-body">
-                    <h4 class="card-title card-title-dash">List trainer of course: {{ $course->name }}</h4>
+                    <h4 class="card-title card-title-dash">List trainee in my course: {{ $course->name }}</h4>
                     <br>
                     <table id="trainer-table" class="table table-condensed col-12">
                         <thead>

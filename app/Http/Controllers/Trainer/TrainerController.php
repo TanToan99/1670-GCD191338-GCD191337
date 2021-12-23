@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Trainer;
 use App\Http\Controllers\Controller;
 use App\Models\Courses;
 use App\Models\Assign_trainer_course;
+use App\Models\Assign_trainee_course;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 
@@ -45,10 +46,10 @@ class TrainerController extends Controller
 
     public function getTnerRowData(Request $request){
         $course_id = $request->id;
-        $assignTrainer = Assign_trainer_course::with('user')->where('course_id',$course_id)->get();
+        $assignTrainee = Assign_trainee_course::with('user')->where('course_id',$course_id)->get();
         // $courses = Courses::select(['id', 'name', 'description', 'category_id'])->get();
         //dd($assignCourses);
-		return Datatables::of($assignTrainer)
+		return Datatables::of($assignTrainee)
         ->editColumn('id', function($data){
             return $data->user->id;
         })
