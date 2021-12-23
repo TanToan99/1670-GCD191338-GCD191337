@@ -22,5 +22,8 @@ class DatabaseSeeder extends Seeder
         Roles::firstOrCreate(['name' => Roles::ROLE_TRAINEE]);
         $user = User::all()->first();
         $user->roles()->sync([1]);
+        //\App\Models\Categories::factory(1)->create();
+        //\App\Models\Courses::factory(1)->create();
+        
     }
 }

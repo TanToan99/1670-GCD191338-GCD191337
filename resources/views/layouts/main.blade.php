@@ -47,7 +47,7 @@
                                 <p class="mb-1 mt-3 font-weight-semibold">{{ auth()->user()->name }}</p>
                                 <p class="fw-light text-muted mb-0">{{ auth()->user()->email }}</p>
                             </div>
-                            <a class="dropdown-item"><i
+                            <a class="dropdown-item" href="{{ route('profile') }}"><i
                                     class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> My
                                 Profile</a>
                             <a class="dropdown-item" href="{{ route('logout') }}"><i
@@ -95,29 +95,23 @@
                             </a>
                         </li>
                     @endif
-                    @if (auth()->user()->isStaff() ||
-    auth()->user()->isAdmin() ||
-    auth()->user()->isTrainer())
-                        <li class="nav-item nav-category">Trainer</li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="collapse" href="#form-elements"
-                                aria-expanded="false" aria-controls="form-elements">
-                                <i class="menu-icon mdi mdi-card-text-outline"></i>
-                                <span class="menu-title">Courses</span>
-                            </a>
-                        </li>
+                    @if(auth()->user()->isStaff() || auth()->user()->isAdmin() || auth()->user()->isTrainer())
+                    <li class="nav-item nav-category">Trainer</li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('trainer.trainer_course') }}">
+                            <i class="menu-icon mdi mdi-floor-plan"></i>
+                            <span class="menu-title">My Courses</span>
+                        </a>
+                    </li>
                     @endif
-                    @if (auth()->user()->isStaff() ||
-    auth()->user()->isAdmin() ||
-    auth()->user()->isTrainee())
-                        <li class="nav-item nav-category">Trainee</li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="collapse" href="#form-elements"
-                                aria-expanded="false" aria-controls="form-elements">
-                                <i class="menu-icon mdi mdi-card-text-outline"></i>
-                                <span class="menu-title">My courses</span>
-                            </a>
-                        </li>
+                    @if(auth()->user()->isStaff() || auth()->user()->isAdmin() || auth()->user()->isTrainee())
+                    <li class="nav-item nav-category">Trainee</li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('trainee.trainee_course') }}">
+                            <i class="menu-icon mdi mdi-floor-plan"></i>
+                            <span class="menu-title">My Courses</span>
+                        </a>
+                    </li>
                     @endif
                 </ul>
             </nav>
