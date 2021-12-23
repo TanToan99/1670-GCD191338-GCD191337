@@ -36,8 +36,8 @@
                 <div class="d-sm-flex align-items-center justify-content-between border-bottom">
                     <div>
                         <div class="btn-wrapper">
-                            <a href="{{ route('management.user.create') }}" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Create
-                                Account</a>
+                            <a href="{{ route('course.create') }}" class="btn btn-primary text-white me-0"><i class="icon-download"></i> 
+                                Create Course</a>
                         </div>
                     </div>
                 </div>
@@ -46,16 +46,15 @@
 
             <div class="card card-rounded">
                 <div class="card-body">
-                    <h4 class="card-title card-title-dash">List User</h4>
+                    <h4 class="card-title card-title-dash">List Course</h4>
                     <br>
                     <table id="users-table" class="table table-condensed col-12">
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Email</th>
                                 <th>Name</th>
-                                <th>Role</th>
-                                <th>Create at</th>
+                                <th>Description</th>
+                                <th>Category</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -80,31 +79,27 @@
                         next: ">"
                     }
                 },
-                ajax: '{{ url('/management/dt-row-data') }}',
+                ajax: '{{ url('/course/dt-row-data') }}',
                 columns: [{
                         data: 'id',
                         name: 'id'
-                    },
-                    {
-                        data: 'email',
-                        name: 'email',
                     },
                     {
                         data: 'name',
                         name: 'name'
                     },
                     {
-                        data: 'role',
-                        name: 'role',
+                        data: 'description',
+                        name: 'description',
                     },
                     {
-                        data: 'created_at',
-                        name: 'created_at',
+                        data: 'category',
+                        name: 'category',
                     },
                     {
                         data: 'action',
-                        name: 'action'
-                    }
+                        name: 'action',
+                    },
                 ]
             });
             $('#users-table_wrapper').removeClass('form-inline');

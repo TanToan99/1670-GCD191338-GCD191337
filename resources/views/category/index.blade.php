@@ -46,6 +46,8 @@
 
             <div class="card card-rounded">
                 <div class="card-body">
+                    <h4 class="card-title card-title-dash">List Categories</h4>
+                    <br>
                     <table id="users-table" class="table table-condensed col-12">
                         <thead>
                             <tr>

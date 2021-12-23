@@ -19,11 +19,15 @@ class CategoryController extends Controller
     {
         $cates = Categories::select(['id', 'name', 'description'])->get();
         return Datatables::of($cates)
+            ->editColumn('name', function ($data) {
+                return '<a href="'.route('category.courses',$data->id).'">'.$data->name.'</a>';
+            })
             ->editColumn('action', function ($data) {
                 return '
             <a href="' . route('category.edit', $data->id) . '"><button class="btn btn-warning mt-2">Edit</button>
             <a href="' . route('category.remove', $data->id) . '"><button class="btn btn-danger mt-2">Remove</button>';
             })
+            ->rawColumns(['name','action'])
             ->make(true);
     }
     
@@ -51,10 +55,10 @@ class CategoryController extends Controller
         return abort(404);
     }
 
-    public function update(CategoryRequest $request, $id)
+    public function update(Request $request, $id)
     {
         if ($cate = Categories::find($id)) {
-            $data = $request->except(["_token","name"]);
+            $data = $request->only(['description']);
             if ($cate->update($data)) {
                 return redirect()->back()->with(['class' => 'success', 'message' => 'Change information success']);
             } else {
@@ -72,5 +76,13 @@ class CategoryController extends Controller
         if ($cate->delete())
             return redirect()->back()->with(['class' => 'success', 'message' => 'Remove success']);
         return redirect()->back()->with(['class' => 'danger', 'message' => 'Something wrong']);
+    }
+
+    public function courses($id)
+    {
+        $cate = Categories::find($id);
+        return view('category.listCourseByCategory',[
+            'category' => $cate
+        ]);
     }
 }
