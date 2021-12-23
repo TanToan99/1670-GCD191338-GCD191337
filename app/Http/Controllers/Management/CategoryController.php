@@ -38,7 +38,7 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request){
         $data = $request->except(["_token"]);
         if($category = Categories::create($data)){
-            return redirect()->back()->with(['class' => 'success', 'message' => 'Create category success']);
+            return redirect()->route('category.index')->with(['class' => 'success', 'message' => 'Create category success']);
         }
         else{
             return redirect()->back()->with(['class' => 'danger', 'message' => 'Error when create category']);

@@ -11,7 +11,10 @@ class Assign_trainee_course extends Model
     
     protected $table = "assign_trainee_courses";
 
-    protected $fillable = ['user_id'];
+    protected $fillable = [
+        'user_id',
+        'course_id'
+    ];
     
     public function user(){
         return $this->belongsTo(User::class);
