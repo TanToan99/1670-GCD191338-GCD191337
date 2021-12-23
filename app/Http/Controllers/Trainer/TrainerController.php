@@ -35,13 +35,17 @@ class TrainerController extends Controller
         ->make(true);
     }
 
-    public function trainer(){
-        return view('trainer.trainer_in_course');
+    public function trainer($id){
+        $course = Courses::find($id);
+        if(!$course) abort(404);
+        return view('trainer.trainer_in_course',[
+            'course' => $course
+        ]);
     }
 
     public function getTnerRowData(Request $request){
-        $Course_id = $request->course_id;
-        $assignTrainer = Assign_trainer_course::with('user')->where('course_id',$Course_id)->get();
+        $course_id = $request->id;
+        $assignTrainer = Assign_trainer_course::with('user')->where('course_id',$course_id)->get();
         // $courses = Courses::select(['id', 'name', 'description', 'category_id'])->get();
         //dd($assignCourses);
 		return Datatables::of($assignTrainer)

@@ -25,5 +25,5 @@ Route::get('/trainee/tnee-row-data', 'Trainer\TrainerController@getTneeRowData')
 
 Route::get('/trainer/trainer-courses','Trainer\TrainerController@index')->name('trainer.trainer_course');
 Route::get('/trainer/dt-row-data', 'Trainer\TrainerController@getDtRowData');
-Route::get('/trainer/trainer_in_course', 'Trainer\TrainerController@trainer')->name('trainer.trainer_in_course');
+Route::get('/trainer/trainer_in_course/{id}', 'Trainer\TrainerController@trainer')->name('trainer.trainer_in_course');
 Route::get('/trainer/tner-row-data', 'Trainer\TrainerController@getTnerRowData');

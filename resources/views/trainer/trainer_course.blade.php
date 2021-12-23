@@ -31,6 +31,8 @@
 @section('content')
     <div class="row">
         <div class="col-sm-12">
+            <div class="card card-rounded">
+                <div class="card-body">
             <br>
             <table id="courses-table" class="table table-condensed col-12">
                 <thead>
@@ -42,6 +44,8 @@
                     </tr>
                 </thead>
             </table>
+        </div>
+    </div>
         </div>
     </div>
 @endsection

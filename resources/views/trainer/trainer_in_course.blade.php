@@ -34,12 +34,14 @@
         <div class="col-sm-12">
             <div class="card card-rounded">
                 <div class="card-body">
+                    <h4 class="card-title card-title-dash">List trainer of course: {{ $course->name }}</h4>
+                    <br>
                     <table id="trainer-table" class="table table-condensed col-12">
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Email</th>
                                 <th>Name</th>
+                                <th>Email</th>
                             </tr>
                         </thead>
                     </table>
@@ -63,19 +65,24 @@
                         next: ">"
                     }
                 },
-                ajax: '{{ url('/trainer/tner-row-data') }}',
+                ajax: {
+                    'url': '{{ url('/trainer/tner-row-data') }}',
+                    'data': {
+                        'id': '{{$course->id}}'
+                    }
+                },
                 columns: [{
                         data: 'id',
                         name: 'id'
                     },
                     {
+                        data: 'name',
+                        name: 'name'
+                    },
+                    {
                         data: 'email',
                         name: 'email',
                         
-                    },
-                    {
-                        data: 'name',
-                        name: 'name'
                     },
                 ]
             });

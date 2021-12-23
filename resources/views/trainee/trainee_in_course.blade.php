@@ -38,8 +38,8 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Email</th>
                                 <th>Name</th>
+                                <th>Email</th> 
                             </tr>
                         </thead>
                     </table>
@@ -69,13 +69,13 @@
                         name: 'id'
                     },
                     {
+                        data: 'name',
+                        name: 'name'
+                    },
+                    {
                         data: 'email',
                         name: 'email',
                         
-                    },
-                    {
-                        data: 'name',
-                        name: 'name'
                     },
                 ]
             });
