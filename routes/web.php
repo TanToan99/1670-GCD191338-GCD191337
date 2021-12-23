@@ -10,6 +10,13 @@ Route::get('logout', 'Auth\LoginController@logout');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/management/user','Management\UserController@index')->name('management.index');
+Route::get('/management/dt-row-data', 'Management\UserController@getDtRowData');
+Route::get('/management/user/edit/{id}','Management\UserController@edit')->name('management.user.edit');
+Route::post('/management/user/edit/{id}','Management\UserController@update')->name('management.user.update');
+Route::get('/management/user/remove/{id}','Management\UserController@remove')->name('management.user.remove');
+Route::get('/management/user/create','Management\UserController@create')->name('management.user.create');
+Route::post('/management/user/store','Management\UserController@store')->name('management.user.store');
+
 Route::get('/trainer/trainer-courses','Trainer\TrainerController@index')->name('trainer.trainer_course');
 Route::get('/management/dt-row-data', 'Management\UserController@getDtRowData');
 Route::get('/trainer/dt-row-data', 'Trainer\TrainerController@getDtRowData');

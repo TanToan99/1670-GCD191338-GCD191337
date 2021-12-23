@@ -15,7 +15,7 @@
             margin: 0 4px;
         }
 
-        .pagination li.active>a{
+        .pagination li.active>a {
             background-color: blue;
             color: white;
             border: 1px solid #blue;
@@ -25,6 +25,7 @@
             background-color: #ddd;
             color: black;
         }
+
     </style>
 @endsection
 
@@ -35,25 +36,30 @@
                 <div class="d-sm-flex align-items-center justify-content-between border-bottom">
                     <div>
                         <div class="btn-wrapper">
-                            <a href="#" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Create
+                            <a href="{{ route('management.user.create') }}" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Create
                                 Account</a>
                         </div>
                     </div>
                 </div>
             </div>
             <br>
-            <table id="users-table" class="table table-condensed col-12">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Email</th>
-                        <th>Name</th>
-                        <th>Role</th>
-                        <th>Create at</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-            </table>
+
+            <div class="card card-rounded">
+                <div class="card-body">
+                    <table id="users-table" class="table table-condensed col-12">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Email</th>
+                                <th>Name</th>
+                                <th>Role</th>
+                                <th>Create at</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
