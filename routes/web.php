@@ -18,7 +18,9 @@ Route::get('/management/user/create','Management\UserController@create')->name('
 Route::post('/management/user/store','Management\UserController@store')->name('management.user.store');
 Route::get('/management/dt-row-data', 'Management\UserController@getDtRowData');
 Route::get('/management/user/{id}/assign','Management\UserController@assign')->name('management.user.assign');
-Route::post('/management/user/{id}/assign','Management\UserController@assignCourse')->name('management.user.assign');
+Route::post('/management/user/{id}/assign','Management\UserController@assignCourse')->name('management.user.assignCourse');
+Route::get('/management/user/{id}/{course}/remove','Management\UserController@removeAssignCourse')->name('management.course.remove');
+Route::get('/management/user/course/dt-row-data','Management\UserController@getCourseRowData');
 
 Route::get('/trainee/trainee-courses','Trainee\TraineeController@index')->name('trainee.trainee_course');
 Route::get('/trainee/dt-row-data', 'Trainee\TraineeController@getDtRowData');
@@ -49,3 +51,6 @@ Route::post('/course/store','Management\CourseController@store')->name('course.s
 Route::get('/course/remove/{id}','Management\CourseController@remove')->name('course.remove');
 Route::get('/course/edit/{id}','Management\CourseController@edit')->name('course.edit');
 Route::post('/course/edit/{id}','Management\CourseController@update')->name('course.update');
+Route::get('/course/view/{id}','Management\CourseController@viewUserinCourse')->name('course.viewUsers');
+Route::get('/course/user/{id}/{user}/remove','Management\CourseController@removeuserincourse')->name('course.remove.user');
+Route::get('/course/user-row-data', 'Management\CourseController@getUsersRowData');

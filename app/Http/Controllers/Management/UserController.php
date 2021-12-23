@@ -105,46 +105,108 @@ class UserController extends Controller
         return redirect()->back()->with(['class' => 'danger', 'message' => 'Something wrong']);
     }
 
-    public function assign($id){
+    public function assign($id)
+    {
         $user = User::find($id);
         $courses = Courses::all();
-        if(!$user) abort(404);
+        if (!$user) abort(404);
         $roleName = $user->roles->first()->name;
-        if($roleName == Roles::ROLE_STAFF || $roleName == Roles::ROLE_ADMIN){
+        if ($roleName == Roles::ROLE_STAFF || $roleName == Roles::ROLE_ADMIN) {
             return redirect()->back()->with(['class' => 'danger', 'message' => 'Can not assign staff or admin to the course']);
         }
-        return view('management.assign',[
+        return view('management.assign', [
             'user' => $user,
             'courses' => $courses,
             'role' => $roleName
         ]);
     }
 
-    public function assignCourse(Request $request,$id){
+    public function assignCourse(Request $request, $id)
+    {
         $user = User::find($id);
-        if(!$user) abort(404);
+        if (!$user) abort(404);
         $roleName = $user->roles->first()->name;
-        if($roleName == Roles::ROLE_STAFF || $roleName == Roles::ROLE_ADMIN){
+        if ($roleName == Roles::ROLE_STAFF || $roleName == Roles::ROLE_ADMIN) {
             return redirect()->back()->with(['class' => 'danger', 'message' => 'Can not assign staff or admin to the course']);
         }
         $course = Courses::find($request->course_id);
-        if(!$course) abort(404);
-        if($roleName == Roles::ROLE_TRAINEE){
-            if(Assign_trainee_course::where([
+        if (!$course) abort(404);
+        if ($roleName == Roles::ROLE_TRAINEE) {
+            if (Assign_trainee_course::where([
                 ['user_id', $user->id],
-                ['course_id', $course->id]])->first())
+                ['course_id', $course->id]
+            ])->first())
                 return redirect()->back()->with(['class' => 'danger', 'message' => 'User already assign to this course']);
-            if(Assign_trainee_course::create(['user_id' => $user->id,'course_id' => $course->id])){
+            if (Assign_trainee_course::create(['user_id' => $user->id, 'course_id' => $course->id])) {
                 return redirect()->back()->with(['class' => 'success', 'message' => 'Assign success']);
             }
-        }else{
-            if(Assign_trainer_course::where([
+        } else {
+            if (Assign_trainer_course::where([
+                ['course_id', $course->id]
+            ])->first())
+                return redirect()->back()->with(['class' => 'danger', 'message' => 'This course had trainer']);
+            if (Assign_trainer_course::where([
                 ['user_id', $user->id],
-                ['course_id', $course->id]])->first())
+                ['course_id', $course->id]
+            ])->first())
                 return redirect()->back()->with(['class' => 'danger', 'message' => 'User already assign to this course']);
-            if(Assign_trainer_course::create(['user_id' => $user->id,'course_id' => $course->id])){
+            if (Assign_trainer_course::create(['user_id' => $user->id, 'course_id' => $course->id])) {
                 return redirect()->back()->with(['class' => 'success', 'message' => 'Assign success']);
             }
+        }
+        return redirect()->back()->with(['class' => 'danger', 'message' => 'Something error']);
+    }
+
+
+    public function getCourseRowData(Request $request)
+    {
+        $user = User::find($request->user_id);
+        if (!$user) abort(404);
+        $roleName = $user->roles->first()->name;
+        if ($roleName == Roles::ROLE_TRAINER) {
+            $assignCourses = Assign_trainer_course::with('course')->where('user_id', $user->id)->get();
+        } else {
+            $assignCourses = Assign_trainee_course::with('course')->where('user_id', $user->id)->get();
+        }
+        return Datatables::of($assignCourses)
+            ->editColumn('id', function ($data) {
+                return $data->course->id;
+            })
+            ->editColumn('name', function ($data) {
+                return $data->course->name;
+            })
+            ->editColumn('description', function ($data) {
+                return $data->course->description;
+            })
+            ->editColumn('category', function ($data) {
+                return '<a href="' . route('category.courses', $data->course->category->id) . '">' . $data->course->category->name . '</a>';
+            })
+            ->editColumn('action', function ($data) {
+                return '<a href="' . route('management.course.remove', [$data->user->id ,$data->course->id]) . '"><button class="btn btn-danger mt-2">Remove</button>';
+            })
+            ->rawColumns(['category', 'action'])
+            ->make(true);
+    }
+
+    public function removeAssignCourse($id,$course){
+        $user = User::find($id);
+        if (!$user) abort(404);
+        $roleName = $user->roles->first()->name;
+        $course = Courses::find($course);
+        if (!$course) abort(404);
+        if ($roleName == Roles::ROLE_TRAINEE) {
+            if (Assign_trainee_course::where([
+                ['user_id', $user->id],
+                ['course_id', $course->id]
+            ])->first()->delete())
+                return redirect()->back()->with(['class' => 'success', 'message' => 'Remove success']);
+            
+        } else {
+            if (Assign_trainer_course::where([
+                ['user_id', $user->id],
+                ['course_id', $course->id]
+            ])->first()->delete())
+                return redirect()->back()->with(['class' => 'success', 'message' => 'Remove success']);
         }
         return redirect()->back()->with(['class' => 'danger', 'message' => 'Something error']);
     }
