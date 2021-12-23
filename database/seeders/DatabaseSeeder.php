@@ -15,12 +15,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(1)->create();
+        /*\App\Models\User::factory(1)->create();
         Roles::firstOrCreate(['name' => Roles::ROLE_ADMIN]);
         Roles::firstOrCreate(['name' => Roles::ROLE_STAFF]);
         Roles::firstOrCreate(['name' => Roles::ROLE_TRAINER]);
         Roles::firstOrCreate(['name' => Roles::ROLE_TRAINEE]);
         $user = User::all()->first();
-        $user->roles()->sync([1]);
+        $user->roles()->sync([1]);*/
+        //\App\Models\Categories::factory(1)->create();
+        \App\Models\Courses::factory(1)->create();
+        
     }
 }

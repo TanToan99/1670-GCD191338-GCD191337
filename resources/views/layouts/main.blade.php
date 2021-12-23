@@ -91,20 +91,18 @@
                     @if(auth()->user()->isStaff() || auth()->user()->isAdmin() || auth()->user()->isTrainer())
                     <li class="nav-item nav-category">Trainer</li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false"
-                            aria-controls="form-elements">
-                            <i class="menu-icon mdi mdi-card-text-outline"></i>
-                            <span class="menu-title">Courses</span>
+                        <a class="nav-link" href="{{ route('trainer.trainer_course') }}">
+                            <i class="menu-icon mdi mdi-floor-plan"></i>
+                            <span class="menu-title">My Courses</span>
                         </a>
                     </li>
                     @endif
                     @if(auth()->user()->isStaff() || auth()->user()->isAdmin() || auth()->user()->isTrainee())
                     <li class="nav-item nav-category">Trainee</li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false"
-                            aria-controls="form-elements">
-                            <i class="menu-icon mdi mdi-card-text-outline"></i>
-                            <span class="menu-title">My courses</span>
+                        <a class="nav-link" href="{{ route('trainer.trainer_course') }}">
+                            <i class="menu-icon mdi mdi-floor-plan"></i>
+                            <span class="menu-title">My Courses</span>
                         </a>
                     </li>
                     @endif
