@@ -36,8 +36,8 @@
                 <div class="d-sm-flex align-items-center justify-content-between border-bottom">
                     <div>
                         <div class="btn-wrapper">
-                            <a href="{{ route('management.user.create') }}" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Create
-                                Account</a>
+                            <a href="{{ route('category.create') }}" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Create
+                                Category</a>
                         </div>
                     </div>
                 </div>
@@ -46,16 +46,14 @@
 
             <div class="card card-rounded">
                 <div class="card-body">
-                    <h4 class="card-title card-title-dash">List User</h4>
+                    <h4 class="card-title card-title-dash">List Categories</h4>
                     <br>
                     <table id="users-table" class="table table-condensed col-12">
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Email</th>
                                 <th>Name</th>
-                                <th>Role</th>
-                                <th>Create at</th>
+                                <th>Description</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -80,26 +78,18 @@
                         next: ">"
                     }
                 },
-                ajax: '{{ url('/management/dt-row-data') }}',
+                ajax: '{{ url('/category/dt-row-data') }}',
                 columns: [{
                         data: 'id',
                         name: 'id'
-                    },
-                    {
-                        data: 'email',
-                        name: 'email',
                     },
                     {
                         data: 'name',
                         name: 'name'
                     },
                     {
-                        data: 'role',
-                        name: 'role',
-                    },
-                    {
-                        data: 'created_at',
-                        name: 'created_at',
+                        data: 'description',
+                        name: 'description',
                     },
                     {
                         data: 'action',

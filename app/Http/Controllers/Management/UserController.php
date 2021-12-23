@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Management;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UserRequest;
+use App\Http\Requests\UserCreateRequest;
+use App\Http\Requests\UserUpdateRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
@@ -36,7 +37,7 @@ class UserController extends Controller
         return view('management.create');
     }
     
-    public function store(UserRequest $request){
+    public function store(UserCreateRequest $request){
         $data = $request->except(["_token","confirm_password"]);
         $data["password"] = bcrypt($data["password"]);
         if(User::create($data)){
@@ -55,7 +56,7 @@ class UserController extends Controller
         return abort(404);
     }
 
-    public function update(UserRequest $request, $id)
+    public function update(UserUpdateRequest $request, $id)
     {
         if ($user = User::find($id)) {
             $data = $request->except(["_token", "password", "confirm_password", "email"]);
