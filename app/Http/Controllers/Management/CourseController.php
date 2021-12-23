@@ -52,7 +52,7 @@ class CourseController extends Controller
         $data = $request->except(["_token","category"]);
         $data["category_id"] = $request->category;
         if ($course = Courses::create($data)) {
-            return redirect()->back()->with(['class' => 'success', 'message' => 'Create course success']);
+            return redirect()->route('course.index')->with(['class' => 'success', 'message' => 'Create course success']);
         } else {
             return redirect()->back()->with(['class' => 'danger', 'message' => 'Error when create course']);
         }

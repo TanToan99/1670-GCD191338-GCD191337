@@ -16,6 +16,8 @@ Route::post('/management/user/edit/{id}','Management\UserController@update')->na
 Route::get('/management/user/remove/{id}','Management\UserController@remove')->name('management.user.remove');
 Route::get('/management/user/create','Management\UserController@create')->name('management.user.create');
 Route::post('/management/user/store','Management\UserController@store')->name('management.user.store');
+Route::get('/management/user/{id}/assign','Management\UserController@assign')->name('management.user.assign');
+Route::post('/management/user/{id}/assign','Management\UserController@assignCourse')->name('management.user.assign');
 
 Route::get('/category','Management\CategoryController@index')->name('category.index');
 Route::get('/category/dt-row-data', 'Management\CategoryController@getDtRowData');

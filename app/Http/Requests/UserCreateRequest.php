@@ -25,11 +25,12 @@ class UserCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'email:rfc',
+            'email' => 'email:rfc|unique:users',
             'name' => 'required|string',
             'password' => ['required', Password::defaults()],
             'confirm_password' => 'same:password',
             'age' => 'required|numeric',
+            'role' => 'required|string',
         ];
     }
 }
