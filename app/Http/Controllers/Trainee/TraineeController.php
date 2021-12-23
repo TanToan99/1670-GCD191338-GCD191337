@@ -31,19 +31,24 @@ class TraineeController extends Controller
         ->editColumn('category', function($data){ 
             return $data->course->category->name;
         })
+        ->rawColumns(['name'])
         ->make(true);
     }
 
-    public function trainee(){
-        return view('trainee.trainee_in_course');
+    public function trainee($id){
+        $course = Courses::find($id);
+        if(!$course) abort(404);
+        return view('trainee.trainee_in_course',[
+            'course' => $course
+        ]);
     }
 
     public function getTneeRowData(Request $request){
-        $Course_id = $request->course_id;
-        $assignTrainer = Assign_trainer_course::with('user')->where('course_id',$Course_id)->get();
+        $course_id = $request->id;
+        $assignTrainee = Assign_trainee_course::with('user')->where('course_id',$course_id)->get();
         // $courses = Courses::select(['id', 'name', 'description', 'category_id'])->get();
         //dd($assignCourses);
-		return Datatables::of($assignTrainer)
+		return Datatables::of($assignTrainee)
         ->editColumn('id', function($data){
             return $data->user->id;
         })

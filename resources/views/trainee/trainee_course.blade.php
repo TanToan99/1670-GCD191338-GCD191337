@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Trainer Course')
+@section('title', 'Trainee Course')
 
 @section('custom-css')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />

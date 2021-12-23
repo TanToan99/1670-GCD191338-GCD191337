@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'User Management')
+@section('title', 'Trainee in course')
 
 @section('custom-css')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
@@ -34,7 +34,9 @@
         <div class="col-sm-12">
             <div class="card card-rounded">
                 <div class="card-body">
-                    <table id="users-table" class="table table-condensed col-12">
+                    <h4 class="card-title card-title-dash">List trainee of course: {{ $course->name }}</h4>
+                    <br>
+                    <table id="trainee-table" class="table table-condensed col-12">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -54,7 +56,7 @@
     <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#users-table').DataTable({
+            $('#trainee-table').DataTable({
                 processing: true,
                 serverSide: true,
                 language: {
@@ -63,8 +65,14 @@
                         next: ">"
                     }
                 },
-                ajax: '{{ url('/trainer/tner-row-data') }}',
-                columns: [{
+                ajax: {
+                    'url': '{{ url('/trainee/tnee-row-data') }}',
+                    'data': {
+                        'id': '{{$course->id}}'
+                    }
+                },
+                columns: [
+                    {
                         data: 'id',
                         name: 'id'
                     },

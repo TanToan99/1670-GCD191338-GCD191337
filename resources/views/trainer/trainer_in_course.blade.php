@@ -71,7 +71,8 @@
                         'id': '{{$course->id}}'
                     }
                 },
-                columns: [{
+                columns: [
+                    {
                         data: 'id',
                         name: 'id'
                     },

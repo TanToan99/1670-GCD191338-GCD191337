@@ -20,10 +20,13 @@ Route::get('/management/dt-row-data', 'Management\UserController@getDtRowData');
 
 Route::get('/trainee/trainee-courses','Trainee\TraineeController@index')->name('trainee.trainee_course');
 Route::get('/trainee/dt-row-data', 'Trainee\TraineeController@getDtRowData');
-Route::get('/trainee/trainee_in_course', 'Trainee\TraineeController@trainee')->name('trainee.trainee_in_course');
-Route::get('/trainee/tnee-row-data', 'Trainer\TrainerController@getTneeRowData');
+Route::get('/trainee/trainee_in_course/{id}', 'Trainee\TraineeController@trainee')->name('trainee.trainee_in_course');
+Route::get('/trainee/tnee-row-data', 'Trainee\TraineeController@getTneeRowData');
 
 Route::get('/trainer/trainer-courses','Trainer\TrainerController@index')->name('trainer.trainer_course');
 Route::get('/trainer/dt-row-data', 'Trainer\TrainerController@getDtRowData');
 Route::get('/trainer/trainer_in_course/{id}', 'Trainer\TrainerController@trainer')->name('trainer.trainer_in_course');
 Route::get('/trainer/tner-row-data', 'Trainer\TrainerController@getTnerRowData');
+
+
+Route::get('/profile','UserController@index')->name('profile');

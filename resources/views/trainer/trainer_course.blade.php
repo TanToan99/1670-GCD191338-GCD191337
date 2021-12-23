@@ -46,8 +46,6 @@
             </table>
         </div>
     </div>
-        </div>
-    </div>
 @endsection
 
 @section('custom-js')

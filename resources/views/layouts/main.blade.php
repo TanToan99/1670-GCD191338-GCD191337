@@ -47,7 +47,7 @@
                                 <p class="mb-1 mt-3 font-weight-semibold">{{ auth()->user()->name }}</p>
                                 <p class="fw-light text-muted mb-0">{{ auth()->user()->email }}</p>
                             </div>
-                            <a class="dropdown-item"><i
+                            <a class="dropdown-item" href="{{ route('profile') }}"><i
                                     class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> My
                                 Profile</a>
                             <a class="dropdown-item" href="{{ route('logout') }}"><i
